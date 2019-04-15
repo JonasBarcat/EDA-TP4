@@ -85,6 +85,14 @@ public class Principal {
         
     System.out.println();
     System.out.println();
+    
+    /////////////////////////////////////////////////////////////////////////////////////77
+    
+    System.out.println("::::::::::::::::::  Twitch :::::::::::::::::::: ");
+    System.out.println();
+    
+    RedSocial Twitch=RedSocial.union(Facebook, Instagram);
+    Twitch.verUsuarios();
     }
     
 }
