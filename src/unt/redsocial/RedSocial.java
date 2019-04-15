@@ -40,32 +40,64 @@ public class RedSocial {
         }
         System.out.println();
     }
+
     
-    public boolean estaUsuario(Usuario usr){ // ver si el usuario enviado por parametro está en la red social
-        Usuario aux=this.primero;    
-            while(aux!=null){
-                if(usr.equals(aux)){
-                    return true;}
-            aux=aux.getSiguiente();
-            }
-        return false;
-    }
-    
-    
-    
-    public void echarUsuario(Usuario usr){  //elimina el usuario enviado por parametro de la red social
-        if(esVacia()){
-            System.out.println("No se pudo echar al usuario, la Red Social no tiene usuarios");
-        }else{
+     public boolean estaUsuario(Usuario usr){ // ver si el usuario enviado por parametro está en la red social   
             Usuario aux=this.primero;
-                while(aux!=null){
-                    if(aux.getSiguiente().equals(usr)){
-                        aux.setSiguiente(aux.getSiguiente().getSiguiente());
-                        System.out.println("El usuario : "+usr.getUsuario()+" fue echado exitosamente");
-                    }
-                aux=aux.getSiguiente();
-                }
+            Usuario user=usr;
+            return esta(user,aux);
+    }
+    private boolean esta(Usuario usr,Usuario aux){
+        if(aux==null){
+            return false;
+        }else if(aux.equals(usr)){
+            return true;
+        }
+        else{
+            return esta(usr,aux.getSiguiente());
         }
     }
+    
+    
+    
+    // cuando en el IF cambio == por equals() surge null point exception ¿?
+    public void echarUsuario(Usuario usr){  //elimina el usuario enviado por parametro de la red social
+       Usuario aux=this.primero;
+       if(esVacia()){ System.out.println("No se pudo echar al usuario, la red social no tiene usuarios");}
+        while(aux!=null){
+            if(aux.equals(usr)){ // caso para usuario en el primero nodo
+                aux=aux.getSiguiente();
+                this.primero=aux;
+                System.out.println("Se elimino el usuario "+usr.getUsuario());
+            }
+            if(aux.getSiguiente()==usr){ // caso usuario en el resto de los nodos
+              aux.setSiguiente(aux.getSiguiente().getSiguiente());
+              System.out.println("Se elimino el usuario "+usr.getUsuario());
+            }
+          aux=aux.getSiguiente();
+        }
+    }
+    
+    
+    public Usuario ultimoUsuario(){  // este metodo me devueve el ultimo usuario 
+           Usuario aux=this.primero; 
+           if(esVacia()){return null;}
+            while(aux.getSiguiente()!=null){
+                aux=aux.getSiguiente();
+            }
+            return aux;
+    }
+    
+    
+    public int cantidadUsuarios(){
+        Usuario aux=this.primero;
+        int cantidad=0;
+            while(aux!=null){
+                cantidad++;
+            aux=aux.getSiguiente();
+            }
+    return cantidad;
+    }
+    
     
 }
