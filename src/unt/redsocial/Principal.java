@@ -91,8 +91,37 @@ public class Principal {
     System.out.println("::::::::::::::::::  Twitch :::::::::::::::::::: ");
     System.out.println();
     
-    RedSocial Twitch=RedSocial.union(Facebook, Instagram);
-    Twitch.verUsuarios();
+    RedSocial Twitch=union(Facebook, Instagram);
     }
+    
+    
+    
+    
+    
+    
+    
+    public static RedSocial union(RedSocial red1,RedSocial red2){
+        RedSocial nueva=new RedSocial();
+        
+        red1.verUsuarios();
+             nueva.registrar(red1.ultimoUsuario()); // registro usuario1
+             nueva.verUsuarios();
+             red1.echarUsuario(red1.ultimoUsuario());  //elimino usuario1 de red1
+                nueva.registrar(red1.ultimoUsuario());  //registro usuario2 de red1
+                nueva.verUsuarios();
+                red1.echarUsuario(red1.ultimoUsuario()); // elimino usuario2 de red1
+       red1.verUsuarios();
+//                    nueva.registrar(red1.ultimoUsuario());
+//                    nueva.verUsuarios();
+//                    red1.echarUsuario(red1.ultimoUsuario());
+                
+            
+        
+            
+      return nueva;
+    }
+ 
+    
+    
     
 }

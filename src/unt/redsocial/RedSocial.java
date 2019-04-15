@@ -102,32 +102,5 @@ public class RedSocial {
     
     
     
-    public static RedSocial union(RedSocial uno,RedSocial dos){
-        RedSocial nueva=new RedSocial();
-        
-        Usuario aux1=uno.primero;
-        Usuario aux2=dos.primero;
-        
-            while(aux1!=null ){
-                System.out.println("usuario :"+aux1.getUsuario()+" agregado a la nueva red Twitch");
-                Usuario nuevo=new Usuario(aux1.getUsuario());
-                nuevo.setSiguiente(nueva.primero);
-                nueva.primero=nuevo;
-                aux1=aux1.getSiguiente();
-            }
-            
-             while(aux2!=null ){
-                System.out.println("usuario :"+aux2.getUsuario()+" agregado a la nueva red Twitch");
-                Usuario nuevo=new Usuario(aux2.getUsuario());
-                nuevo.setSiguiente(nueva.primero);
-                nueva.primero=nuevo;
-                aux2=aux2.getSiguiente();
-            }
-            
-            
-      return nueva;
-    }
- 
-    
     
 }
