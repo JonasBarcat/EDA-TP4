@@ -38,6 +38,7 @@ public class Principal {
         }else System.out.println("El usuario "+usr3.getUsuario()+" no se encuentra en el sistema");
         
         Facebook.echarUsuario(usr4);
+        System.out.println("Se ha borrado el usuario: "+usr4.getUsuario() );
         Facebook.verUsuarios();
 
         System.out.println("El ultimo usuario es: "+Facebook.ultimoUsuario().getUsuario());
@@ -47,7 +48,7 @@ public class Principal {
         
         System.out.println();
         System.out.println();
-        //////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////
         
         System.out.println("::::::::::::::::::  Instagram :::::::::::::::::::: ");
         System.out.println();
@@ -76,6 +77,7 @@ public class Principal {
         }else System.out.println("El usuario "+usr9.getUsuario()+" no se encuentra en Instagram");
         
         Instagram.echarUsuario(usr8);
+        System.out.println("Se ha borrado el usuario: "+usr8.getUsuario() );
         Instagram.verUsuarios();
         
         System.out.println("El ultimo usuario es: "+Instagram.ultimoUsuario().getUsuario());
@@ -92,6 +94,8 @@ public class Principal {
     System.out.println();
     
     RedSocial Twitch=union(Facebook, Instagram);
+    
+    
     }
     
     
@@ -103,20 +107,10 @@ public class Principal {
     public static RedSocial union(RedSocial red1,RedSocial red2){
         RedSocial nueva=new RedSocial();
         
-        red1.verUsuarios();
              nueva.registrar(red1.ultimoUsuario()); // registro usuario1
-             nueva.verUsuarios();
-             red1.echarUsuario(red1.ultimoUsuario());  //elimino usuario1 de red1
-                nueva.registrar(red1.ultimoUsuario());  //registro usuario2 de red1
-                nueva.verUsuarios();
-                red1.echarUsuario(red1.ultimoUsuario()); // elimino usuario2 de red1
-       red1.verUsuarios();
-//                    nueva.registrar(red1.ultimoUsuario());
-//                    nueva.verUsuarios();
-//                    red1.echarUsuario(red1.ultimoUsuario());
-                
-            
-        
+             red1.echarUsuario(red1.ultimoUsuario()); //borrar ultimo usuario de red1
+           
+   
             
       return nueva;
     }

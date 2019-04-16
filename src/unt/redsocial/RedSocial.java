@@ -5,8 +5,6 @@
  */
 package unt.redsocial;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author jonas
@@ -61,22 +59,24 @@ public class RedSocial {
     
     
     
-    // cuando en el IF cambio == por equals() surge null point exception ¿?
+
     public void echarUsuario(Usuario usr){  //elimina el usuario enviado por parametro de la red social
        Usuario aux=this.primero;
-       if(esVacia()){ System.out.println("No se pudo echar al usuario, la red social no tiene usuarios");}
-        while(aux!=null){
-            if(aux.equals(usr)){ // caso para usuario en el primero nodo
-                aux=aux.getSiguiente();
-                this.primero=aux;
-                System.out.println("Se elimino el usuario "+usr.getUsuario());
-            }
-            if(aux.getSiguiente()==usr){ // caso usuario en el resto de los nodos
-              aux.setSiguiente(aux.getSiguiente().getSiguiente());
-              System.out.println("Se elimino el usuario "+usr.getUsuario());
-            }
-          aux=aux.getSiguiente();
-        }
+       if(esVacia()){
+           System.out.println("Red social vacía");
+       }else{
+           if(this.primero.getUsuario()==usr.getUsuario()){
+               this.primero=this.primero.getSiguiente();
+           }else{
+               while(aux.getSiguiente()!=null){
+                   if(aux.getSiguiente().getUsuario()==usr.getUsuario()){
+                       aux.setSiguiente(aux.getSiguiente().getSiguiente());
+                   }else aux=aux.getSiguiente();
+               }
+           }
+       }
+       
+       
     }
     
     
